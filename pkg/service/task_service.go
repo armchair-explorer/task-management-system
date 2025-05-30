@@ -9,6 +9,7 @@ import (
 type TaskService interface {
 	CreateTask(task *domain.Task) error
 	UpdateTask(task *domain.Task) error
+	DeleteTask(task *domain.Task) error
 }
 
 type taskService struct {
@@ -26,4 +27,8 @@ func (s *taskService) CreateTask(task *domain.Task) error {
 
 func (s *taskService) UpdateTask(task *domain.Task) error {
 	return s.repo.Update(task)
+}
+
+func (s *taskService) DeleteTask(task *domain.Task) error {
+        return s.repo.Delete(task)
 }

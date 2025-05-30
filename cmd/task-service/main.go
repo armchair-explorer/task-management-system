@@ -24,6 +24,7 @@ func main() {
 	r := gin.Default()
 
 	r.POST("/tasks", handler.CreateTask)
+	r.DELETE("/tasks/:id", handler.DeleteTask)
 	r.PUT("/tasks/:id", handler.UpdateTask)
 
 	r.Run(":8080")

@@ -11,3 +11,9 @@ type UpdateTaskRequest struct {
 	Description string `json:"description"`
 	Status      string `json:"status"`
 }
+
+type DeleteTaskRequest struct {
+	Title       string `json:"title"`
+	Description string `json:"description"`
+	Status      string `json:"status"`
+}

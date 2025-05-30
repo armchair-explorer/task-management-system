@@ -9,6 +9,7 @@ import (
 type TaskRepository interface {
 	Create(task *domain.Task) error
 	Update(task *domain.Task) error
+	Delete(task *domain.Task) error
 }
 
 type taskRepository struct {
@@ -31,4 +32,9 @@ func (r *taskRepository) Update(task *domain.Task) error {
 	return err
 }
 
+func (r *taskRepository) Delete(task *domain.Task) error {
+	query := `UPDATE tasks SET is_active=FALSE, updated_at=NOW() WHERE id=$1`
+	_, err := r.db.Exec(query,task.ID)
+	return err
+}
 
